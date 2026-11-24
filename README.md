@@ -237,22 +237,23 @@ flutter run
 
 ```bash
 cd ../web
+npm install
 ```
 
-The browser app reads its API origin from the `lynk-api-base` meta tag in
-`app/send.html` and `app/receive.html`. Set both to your backend origin, for
-example `http://localhost:8000`.
+The transfer document reads its API origin from the `lynk-api-base` meta tag in
+`revamp/transfer.html`. Set it to your backend origin, for example
+`http://localhost:8000`.
 
-Serve the site with the included development server:
+Run the Vite development server on port 3000 so it matches the default backend
+`ALLOWED_ORIGINS`:
 
 ```bash
-python tools/dev_server.py 3000
+npm run dev -- --port 3000
 ```
 
-Open `http://localhost:3000`. The server handles the deep-link paths used by the
-receiver page. The default backend `ALLOWED_ORIGINS` already includes this port;
-if you serve the web app on another port, add that origin to `ALLOWED_ORIGINS`
-in `backend/.env`.
+Open `http://localhost:3000`. If you use another port, add that origin to
+`ALLOWED_ORIGINS` in `backend/.env`; the default list includes only
+`http://localhost:3000` and `http://localhost:8000`.
 
 ### 5. Try a transfer
 
